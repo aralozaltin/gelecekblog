@@ -49,7 +49,7 @@ Uygulama çalıştığında `wwwroot/uploads/` klasöründeki görsellerden rast
 
 Uygulama ilk çalıştığında:
 - 🔐 Admin oluşturulur  
-  `admin@site.com` / `Admin123*`
+  `admin` / `Admin123*`
 - 📁 5 kategori eklenir
 - 📝 150 sahte gönderi üretilir
 - 📸 Yüklenmiş görsellerden rastgele atanır

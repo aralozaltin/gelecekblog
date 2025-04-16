@@ -56,6 +56,37 @@ Uygulama ilk çalıştığında:
 
 ---
 
+## 🔍 Ekran Görüntüleri
+
+### 🏠 Anasayfa
+![Homepage](wwwroot/screenshots/homepage.png)
+
+### 🔓 Giriş Ekranı
+![Login](wwwroot/screenshots/login.png)
+
+### 🆕 Kayıt Ol
+![Register](wwwroot/screenshots/register.png)
+
+### ✍️ Yeni Gönderi Oluştur
+![Yeni Gönderi](wwwroot/screenshots/create_new_post.png)
+
+### 💬 Yorumlar (Misafir)
+![Guest Comments](wwwroot/screenshots/comments_as_guest.png)
+
+### 🛡️ Admin Paneli
+![Dashboard](wwwroot/screenshots/admin_dashboard.png)
+
+### 📁 Kategoriler Yönetimi
+![Kategoriler](wwwroot/screenshots/admin_categories.png)
+
+### 👥 Kullanıcı Yönetimi
+![Kullanıcılar](wwwroot/screenshots/admin_user_panel.png)
+
+### ⚙️ Profil Düzenleme
+![Profil](wwwroot/screenshots/profile_edit.png)
+
+---
+
 ## 🛠️ Kurulum
 
 ```bash

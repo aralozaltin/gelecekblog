@@ -1,0 +1,35 @@
+@model List<BlogProject.Models.Kategori>
+
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+<h2 class="mb-4">Kategoriler</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<a asp-action="Create" class="btn btn-sm btn-success mb-3">Yeni Kategori</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kategori in Model)
+        {
+            <tr>
+                <td>@kategori.Ad</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,115 @@
+/* ----- Base & Responsive Font Sizes ----- */
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ----- Body & Background ----- */
+body {
+  margin-bottom: 60px;
+  /* Daha aydınlık gradient */
+  background: linear-gradient(135deg, #f0f0f0, #b3b3b3);
+  color: #333;
+  font-family: sans-serif;
+}
+
+/* ----- Input & Focus Styles ----- */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+.input-group-text {
+  background: #e6e6e6;
+  border: none;
+  color: #333;
+  font-weight: bold;
+}
+.form-select {
+  background: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+/* ----- Card Styles ----- */
+.card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.card-title {
+  font-family: 'Cinzel', serif;
+  color: #333; /* Altın ton yerine daha koyu bir başlık isterseniz #ffd700 yapabilirsiniz. */
+}
+.card-text {
+  color: #555;
+}
+
+/* ----- Headings & Navbar ----- */
+h2.mb-4 {
+  font-family: 'Cinzel', serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* ----- Buttons ----- */
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.03);
+}
+.btn-danger {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+  transition: background-color 0.3s, transform 0.3s;
+  color: #fff;
+}
+.btn-danger:hover {
+  background-color: #e60000;
+  transform: scale(1.03);
+}
+
+/* ----- Fancy Button (Opsiyonel) ----- */
+.btn-fancy {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-fancy:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ----- Fade-in Animation ----- */
+.fade-in {
+  animation: fadeIn 0.7s ease-in-out;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

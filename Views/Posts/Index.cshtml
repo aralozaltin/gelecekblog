@@ -1,0 +1,71 @@
+@model List<BlogProject.Models.Post>
+@using BlogProject.Models
+
+@{
+    ViewData["Title"] = "Tüm Gönderiler";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<form asp-action="Index" method="get" class="mb-3 w-50">
+    <div class="input-group">
+        <label class="input-group-text" for="kategoriId">Kategori:</label>
+        <select class="form-select" id="kategoriId" name="kategoriId" onchange="this.form.submit()">
+            <option value="">Tüm Kategoriler</option>
+            @foreach (var kategori in (List<BlogProject.Models.Kategori>)ViewBag.Kategoriler)
+            {
+                if (ViewBag.SelectedKategoriId == kategori.Id)
+                {
+                    <option value="@kategori.Id" selected="selected">@kategori.Ad</option>
+                }
+                else
+                {
+                    <option value="@kategori.Id">@kategori.Ad</option>
+                }
+            }
+        </select>
+    </div>
+</form>
+
+<h2 class="mb-4">📝 Gönderiler</h2>
+
+<div class="row">
+    @foreach (var post in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card card-hover shadow-sm h-100 d-flex flex-column fade-in">
+                @if (!string.IsNullOrEmpty(post.GorselYolu))
+                {
+                    <img src="@post.GorselYolu" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Post Görseli" />
+                }
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">@post.Baslik</h5>
+                        <p class="card-text text-muted">
+                            @post.OlusturmaTarihi.ToShortDateString() |
+                            @post.Kullanici?.AdSoyad |
+                            @post.Kategori?.Ad
+                        </p>
+                        <p class="card-text">
+                            @post.Icerik.Substring(0, Math.Min(post.Icerik.Length, 100))...
+                        </p>
+                    </div>
+
+                    <div class="mt-3">
+                        <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-sm btn-primary">Detaylar</a>
+
+                        @if (User.Identity.IsAuthenticated &&
+                            (post.Kullanici?.UserName == User.Identity?.Name || User.IsInRole("Admin")))
+                        {
+                            <form asp-action="Delete" asp-route-id="@post.Id" method="post"
+                                  onsubmit="return confirm('Silmek istediğine emin misin?');"
+                                  style="display:inline;">
+                                <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

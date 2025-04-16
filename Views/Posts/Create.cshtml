@@ -1,0 +1,41 @@
+@model BlogProject.ViewModels.PostCreateViewModel
+
+@{
+    ViewData["Title"] = "Yeni Gönderi";
+}
+
+<h2 class="mb-4">📝 Yeni Gönderi Ekle</h2>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Baslik" class="form-label"></label>
+        <input asp-for="Baslik" class="form-control" />
+        <span asp-validation-for="Baslik" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Icerik" class="form-label"></label>
+        <textarea asp-for="Icerik" class="form-control" rows="6"></textarea>
+        <span asp-validation-for="Icerik" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="KategoriId" class="form-label">Kategori</label>
+        <select asp-for="KategoriId" class="form-select"
+                asp-items="@(new SelectList(ViewBag.Kategoriler, "Id", "Ad"))">
+            <option value="">Seçiniz</option>
+        </select>
+        <span asp-validation-for="KategoriId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Gorsel" class="form-label">Görsel (opsiyonel)</label>
+        <input asp-for="Gorsel" type="file" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Gönderiyi Kaydet</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,70 @@
+@model BlogProject.Models.Post
+
+@{
+    ViewData["Title"] = "Gönderi Detayı";
+}
+
+@if (!string.IsNullOrEmpty(Model.GorselYolu))
+{
+    <img src="@Model.GorselYolu" alt="Post Görseli" class="img-fluid mb-3 rounded" />
+}
+
+<div class="card mb-4 shadow">
+    <div class="card-body">
+        <h3>@Model.Baslik</h3>
+        <p class="text-muted">
+            @Model.OlusturmaTarihi.ToShortDateString() |
+            Kategori: <b>@Model.Kategori?.Ad</b>
+        </p>
+        <p>@Model.Icerik</p>
+        <hr />
+        <p><strong>Yazar:</strong> @Model.Kullanici?.AdSoyad</p>
+    </div>
+</div>
+
+<h4>💬 Yorumlar</h4>
+
+@if (Model.Yorumlar != null && Model.Yorumlar.Any())
+{
+    <ul class="list-group">
+        @foreach (var yorum in Model.Yorumlar)
+        {
+            <li class="list-group-item">
+                <strong>@yorum.AppUser?.AdSoyad</strong> (@yorum.Tarih.ToString("dd.MM.yyyy HH:mm")):<br />
+                @yorum.Metin
+
+                @if (User.Identity.IsAuthenticated &&
+                    (yorum.AppUser?.UserName == User.Identity?.Name || User.IsInRole("Admin")))
+                {
+                    <form asp-controller="Yorum" asp-action="Sil" method="post" asp-route-id="@yorum.Id"
+                          onsubmit="return confirm('Yorumu silmek istediğinize emin misiniz?');"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger float-end">Sil</button>
+                    </form>
+                }
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Henüz yorum yok.</p>
+}
+
+<hr />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <form asp-action="YorumEkle" method="post">
+        <input type="hidden" name="PostId" value="@Model.Id" />
+        <div class="mb-2">
+            <label for="Metin" class="form-label">Yorumunuz</label>
+            <textarea name="Metin" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Gönder</button>
+    </form>
+}
+else
+{
+    <p class="text-muted">Yorum yapmak için <a href="/Account/Login">giriş yap</a>malısın.</p>
+}

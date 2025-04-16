@@ -1,0 +1,26 @@
+# build klasörleri
+bin/
+obj/
+
+# veritabanı dosyaları
+*.db
+*.db-journal
+*.sqlite
+
+# kullanıcı ayarları
+.vs/
+*.user
+*.suo
+
+# ortam değişkenleri vs.
+.env
+
+# node.js şeyleri varsa
+node_modules/
+
+# Mac / Linux junk
+.DS_Store
+Thumbs.db
+
+# migrations eğer silinip yeniden ekleniyorsa
+Migrations/

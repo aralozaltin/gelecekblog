@@ -19,7 +19,7 @@ Doğuş Teknoloji – **Geleceğe Giriş Programı** kapsamında geliştirilmiş
 ### 💬 Yorumlar
 - Giriş yapan kullanıcı yorum ekleyebilir
 - Giriş yapmayan sadece okuyabilir
-- Admin tüm yorumları silebilir
+- Admin ve yorum sahibi yorumu silebilir
 
 ### 🛠️ Admin Paneli
 - Kullanıcı yönetimi (admin yap/kaldır, sil)

@@ -4,26 +4,27 @@ namespace BlogProject.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Ad Soyad gerekli.")]
+        [Required]
         [Display(Name = "Ad Soyad")]
         public string AdSoyad { get; set; }
 
-        [Required(ErrorMessage = "Kullanıcı adı gerekli.")]
+        [Required]
         [Display(Name = "Kullanıcı Adı")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Email adresi gerekli.")]
-        [EmailAddress(ErrorMessage = "Geçerli bir email giriniz.")]
+        [Required]
+        [EmailAddress]
+        [Display(Name = "E-posta")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Şifre gerekli.")]
+        [Required]
         [DataType(DataType.Password)]
-        [MinLength(6, ErrorMessage = "Şifre en az 6 karakter olmalı.")]
+        [Display(Name = "Şifre")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Şifre tekrarı gerekli.")]
-        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Şifre doğrulama zorunludur.")]
         [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor.")]
+        [Display(Name = "Şifre Doğrula")]
         public string ConfirmPassword { get; set; }
     }
 }

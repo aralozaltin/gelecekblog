@@ -28,6 +28,14 @@ namespace BlogProject.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            // 🔍 E-posta daha önce kullanılmış mı kontrol et
+            var existingEmailUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingEmailUser != null)
+            {
+                ModelState.AddModelError("Email", "Bu e-posta adresi zaten kullanılıyor.");
+                return View(model);
+            }
+
             var user = new AppUser
             {
                 UserName = model.UserName,
@@ -39,14 +47,14 @@ namespace BlogProject.Controllers
 
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "Kullanıcı");
                 await _signInManager.SignInAsync(user, isPersistent: false);
-
                 return RedirectToAction("Index", "Posts");
             }
 
             foreach (var error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
 
             return View(model);
         }
